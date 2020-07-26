@@ -22,7 +22,9 @@ libraryDependencies ++= Seq(
   "io.estatico"    %% "newtype"             % "0.4.3",
   "eu.timepit"     %% "refined"             % "0.9.12",
   "com.github.julien-truffaut" %% "monocle-core" % "2.0.1",
-  "com.github.julien-truffaut" %% "monocle-macro" % "2.0.1"
+  "com.github.julien-truffaut" %% "monocle-macro" % "2.0.1",
+  "org.http4s"     %% "http4s-dsl"          % "0.21.3",
+  "io.circe"       %% "circe-core"          % "0.13.0",
   )
 
 scalacOptions += "-Ymacro-annotations"

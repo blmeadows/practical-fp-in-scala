@@ -53,3 +53,55 @@
 - Uses compare-and-set (CAS) loop
 
 ### Shared State
+
+##### Regions of sharing
+- Denoted by a simple flatMap call
+- One of the main reasons concurrent data structures are wrapped in F on creation
+  - Ref, Deferred, Semaphore, and an HTTP Client (using http4s)
+  
+##### Leaky state
+- Lose region of sharing and control
+
+### Anti-patterns
+
+##### Seq: a base trait for sequences
+- Thou shalt not use Seq in your interface
+- Use a more specific datatype depending on goal and desired performance characteristics
+  - List, Vector, Chain, fs2.Stream ...
+  
+##### About monad transformers
+- Thou shalt not use Monad Transformers in your interface
+- Fine in local functions (like interpreters), but leave only abstract F in interface
+- Kills compositionality otherwise
+
+### Error handling
+- author's biased recommendation here
+
+##### MonadError and ApplicativeError
+- Normally work in context of some parametric effect F[_]
+- With Cats Effect, we can rely on MonadError / ApplicativeError
+- Whether or not to include error type in signature
+  - Recommendation of only when it's really necessary
+  - Valid case for explicit error handling  is at HTTP layer with response codes (don't need to use Either)
+  - Compromise of not stating error types at the interface level
+ - Code the happy path and watch the frameworks do the right thing
+ - Only worry about successful cases and business errors (let framework handle the rest)
+ 
+ ##### Either Monad
+ - What if business logic changes depending on an error?
+ - Can be valid to use F[Either[E, A]]
+ - ApplicativeError can be used to avoid having the error type in the interface
+    - But won't get a compiler error if more error types are added to the ADT (Algebraic Data Type)
+- Trade-off:
+  - Either Monad - cumbersome composition (need EitherT monad transformer), compiler inference trouble (need to annotate each part)
+  - ApplicativeError/MonadError - better ergonomics at cost of losing the error type
+ 
+ ##### Classy prisms
+ - Generically called *classy optics*
+ - [Meow MTL](https://github.com/oleg-py/meow-mtl) library
+ - Gives back typed errors and exhaustive pattern matching
+    - without polluting interfaces with F[Either[E, A]] nor using monad transformers
+ - Blog post [1](https://typelevel.org/blog/2018/08/25/http4s-error-handling-mtl.html) and [2](https://typelevel.org/blog/2018/11/28/http4s-error-handling-mtl-2.html) on making interface and error handler have a relationship
+ - Meow MTL hierarchy import can resolve ambiguous implicit values issue
+ - (coming back to classy optics later)
+ 
