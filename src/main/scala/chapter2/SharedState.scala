@@ -1,6 +1,6 @@
 // Shared state
 
-// regions of sharing
+/* Regions of sharing */
 
 import cats.effect._
 import cats.effect.concurrent.Semaphore
@@ -31,7 +31,7 @@ object SharedState extends IOApp {
     } *> IO.never.as(ExitCode.Success)
 }
 
-// Leaky state
+/* Leaky state */
 
 // example if shared state (Semaphore) not wrapped in IO (or any other abstract effect)
 

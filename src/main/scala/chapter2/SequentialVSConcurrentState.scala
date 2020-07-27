@@ -1,6 +1,6 @@
 // Sequential vs concurrent state
 
-// State Monad
+/* State Monad */
 
 import cats.data.State
 
@@ -14,6 +14,6 @@ def seq: State[Int, Int] =
     n3 <- nextInt
   } yield n1 + n2 + n3 // state is threaded sequentially after each flatMap call and used for next call
 
-// Atomic Ref
+/* Atomic Ref */
 
 // used in previous counter

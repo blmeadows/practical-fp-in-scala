@@ -1,6 +1,6 @@
 // Anti-patterns
 
-// Seq: a base trait for sequences
+/* Seq: a base trait for sequences */
 
 trait Items[F[_]] {
   def getAll: F[Seq[Item]] // be more specific instead
@@ -16,7 +16,7 @@ class Program[F[_]](items: Items[F[_]]) {
     }
 }
 
-// About monad transformers
+/* About monad transformers */
 
 import java.util.UUID
 import cats.data.OptionT

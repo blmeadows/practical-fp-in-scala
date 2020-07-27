@@ -25,6 +25,7 @@ libraryDependencies ++= Seq(
   "com.github.julien-truffaut" %% "monocle-macro" % "2.0.1",
   "org.http4s"     %% "http4s-dsl"          % "0.21.3",
   "io.circe"       %% "circe-core"          % "0.13.0",
+  "dev.profunktor" %% "redis4cats-effects"  % "0.10.2",
   )
 
 scalacOptions += "-Ymacro-annotations"

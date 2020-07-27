@@ -1,6 +1,6 @@
 // Error handling
 
-// MonadError and ApplicativeError
+/* MonadError and ApplicativeError */
 
 trait Categories[F[_]] { // Categories algebra / interface
   def findAll: F[List[Category]]
@@ -34,7 +34,7 @@ trait Categories[F[_]] {
 }
 
 
-// Either Monad
+/* Either Monad */
 
 class Program[F[_]: Functor](
   categories: Categories[F]
@@ -64,7 +64,7 @@ class SameProgram[F[_]: ApThrow](
 }
 
 
-// Classy prisms (classy optics)
+/* Classy prisms (classy optics) */
 
 import org.http4s.{HttpRoutes, Response}
 import org.http4s.dsl.Http4sDsl

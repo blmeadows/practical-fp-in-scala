@@ -1,6 +1,6 @@
 // Encapsulating state Examples
 
-// in-memory counter
+/* In-memory counter */
 
 trait Counter[F[_]] { // interface with HKT F[_] representing abstract effect (usually ends up being IO)
   def incr: F[Unit]
