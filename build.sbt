@@ -21,11 +21,14 @@ libraryDependencies ++= Seq(
   "com.olegpy"     %% "meow-mtl-effects"    % "0.4.0",
   "io.estatico"    %% "newtype"             % "0.4.3",
   "eu.timepit"     %% "refined"             % "0.9.12",
-  "com.github.julien-truffaut" %% "monocle-core" % "2.0.1",
-  "com.github.julien-truffaut" %% "monocle-macro" % "2.0.1",
   "org.http4s"     %% "http4s-dsl"          % "0.21.3",
   "io.circe"       %% "circe-core"          % "0.13.0",
   "dev.profunktor" %% "redis4cats-effects"  % "0.10.2",
+  "org.typelevel"  %% "squants"             % "1.6.0",
+  "com.github.julien-truffaut" %% "monocle-core"   % "2.0.1",
+  "com.github.julien-truffaut" %% "monocle-macro"  % "2.0.1",
+  "com.github.cb372"           %% "cats-retry"     % "1.1.1",
+  "io.chrisdavenport"          %% "log4cats-slf4j" % "1.0.0"
   )
 
 scalacOptions += "-Ymacro-annotations"

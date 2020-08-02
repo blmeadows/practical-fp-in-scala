@@ -6,6 +6,7 @@ import dev.profunktor.redis4cats.RedisCommands
 import io.estatico.newtype.macros.newtype
 
 // default interpreter using Redis
+
 @newtype case class RedisKey(value: String)
 
 class LiveCounter[F[_]: Functor](

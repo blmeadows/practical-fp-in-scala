@@ -1,6 +1,7 @@
 // Programs
 
 import cats.Apply
+import cats.effect.IO
 
 class ItemsProgram[F[_]: Apply]( // Apply needed for *> (alias for productR)
   counter: Counter[F],
@@ -21,6 +22,8 @@ class ItemsProgram[F[_]: Apply]( // Apply needed for *> (alias for productR)
 
 import cats.effect.Console
 import cats.Monad
+import cats.implicits._
+import cats.syntax.flatMap._
 
 def program[F[_]: Console: Monad]: F[Unit] = // programs can be directly encoded as functions
   for {

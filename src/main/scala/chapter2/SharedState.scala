@@ -12,8 +12,8 @@ object SharedState extends IOApp {
 
   def someExpensiveTask: IO[Unit] =
     IO.sleep(1.second) >>
-      putStrLn("expensive task") >>
-      someExpensiveTask // TODO: come back to describe why `someExpensiveTask` is being called here
+      putStrLn("expensive task") >> // IO(f) >> IO(g) is equivalent to IO(f).flatMap(_ => g)
+      someExpensiveTask // (recursive here for convenience to show repetitive nature)
 
   def p1(sem: Semaphore[IO]): IO[Unit] =
     sem.withPermit(someExpensiveTask) >> p1(sem)
